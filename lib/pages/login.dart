@@ -1,3 +1,4 @@
+import 'package:express_staff/pages/homepage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -36,67 +37,77 @@ class _LoginPageState extends State<LoginPage> {
                       child: Image.asset("assets/images/h2elogo.png")),
                 ],
               ),
-              SizedBox(height: 28.9,),
-              Text("សូមវាយបញ្ចូលឈ្មោះ និងលេខសម្ងាត់",style: TextStyle(
-                fontSize: 20.0,
-              ),),
-              SizedBox(height: 20,),
-              Container(
-                width: 354,
-                height: 50,
-                decoration: BoxDecoration(
-                  color: Color(0xfff3f5f7),
-                  borderRadius: BorderRadius.circular(10.0)
-                ),
-                child: Container(
-                  padding: EdgeInsets.only(bottom: 0,left: 20),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: "ឈ្មោះអ្នកប្រើប្រាស់",
-                      border: InputBorder.none
-                    ),
-                  ),
+              SizedBox(
+                height: 28.9,
+              ),
+              Text(
+                "សូមវាយបញ្ចូលឈ្មោះ និងលេខសម្ងាត់",
+                style: TextStyle(
+                  fontSize: 20.0,
                 ),
               ),
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
               Container(
                 width: 354,
                 height: 50,
                 decoration: BoxDecoration(
                     color: Color(0xfff3f5f7),
-                    borderRadius: BorderRadius.circular(10.0)
-                ),
+                    borderRadius: BorderRadius.circular(10.0)),
                 child: Container(
-                  padding: EdgeInsets.only(bottom: 0,left: 20),
+                  padding: EdgeInsets.only(bottom: 0, left: 20),
                   child: TextField(
-                    obscureText: true,
                     decoration: InputDecoration(
-                        hintText: "លេខសម្ងាត់",
-                        border: InputBorder.none
-                    ),
+                        hintText: "ឈ្មោះអ្នកប្រើប្រាស់",
+                        border: InputBorder.none),
                   ),
                 ),
               ),
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                width: 354,
+                height: 50,
+                decoration: BoxDecoration(
+                    color: Color(0xfff3f5f7),
+                    borderRadius: BorderRadius.circular(10.0)),
+                child: Container(
+                  padding: EdgeInsets.only(bottom: 0, left: 20),
+                  child: TextField(
+                    obscureText: true,
+                    decoration: InputDecoration(
+                        hintText: "លេខសម្ងាត់", border: InputBorder.none),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
               ClipRRect(
                 child: Container(
                   width: 180,
                   height: 50,
                   decoration: BoxDecoration(
-                    color: Colors.blueAccent,
-                    borderRadius: BorderRadius.circular(10.0)
-                  ),
+                      color: Colors.blueAccent,
+                      borderRadius: BorderRadius.circular(10.0)),
                   child: RawMaterialButton(
                     elevation: 0.0,
-                    onPressed: () {  },
-                    child: Text("ចូល",style: TextStyle(
-                      fontSize: 16.0,
-                      color: Colors.white
-                    ),),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => HomePage()));
+                    },
+                    child: Text(
+                      "ចូល",
+                      style: TextStyle(fontSize: 16.0, color: Colors.white),
+                    ),
                   ),
                 ),
               ),
-              SizedBox(height: 80,),
+              SizedBox(
+                height: 80,
+              ),
               ColorFiltered(
                 colorFilter: ColorFilter.mode(Colors.blue, BlendMode.modulate),
                 child: Image.asset("assets/images/logo.png"),

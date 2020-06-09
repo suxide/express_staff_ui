@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Color(0xffe8e8e8),
         appBarTheme: AppBarTheme(
           elevation: 0.0,
-          color: Color(0xffffffff)
+          color: Color(0xffffffff),
         )
       ),
     );
