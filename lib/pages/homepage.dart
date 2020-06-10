@@ -1,5 +1,5 @@
+import 'package:express_staff/pages/model/colors.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -7,63 +7,68 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int theriGroupVakue = 0;
-  final Map<int, Widget> logoWidgets = const<int,Widget>{
+  int currentIndexInTabBar = 0;
 
-    0:Text("មិនទាន់ទទួល",style: TextStyle(fontSize: 16),),
-    1:Text("បានទទួល",style: TextStyle(fontSize: 16)),
-    2:Text("ទាំងអស់",style: TextStyle(fontSize: 16))
-
+  final Map<int, Widget> titleAppbar = const <int, Widget>{
+    0: Text(
+      "មិនទាន់ទទួល",
+      style: TextStyle(fontSize: 16),
+    ),
+    1: Text("បានទទួល", style: TextStyle(fontSize: 16)),
+    2: Text("ទាំងអស់", style: TextStyle(fontSize: 16))
   };
-  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      drawer: Drawer(),
-      key: _scaffoldKey,
-      body: CustomScrollView(
+    Size size = MediaQuery.of(context).size;
+
+    return CupertinoPageScaffold(
+      child: CustomScrollView(
         slivers: <Widget>[
-          SliverAppBar(
-            expandedHeight: 46.0,
-            leading: IconButton(
-              icon: Icon(Icons.menu,color: Colors.black,),
+          CupertinoSliverNavigationBar(
+            leading: CupertinoButton(
+              child: Icon(CupertinoIcons.back),
               onPressed: () {
-                _scaffoldKey.currentState.openDrawer();
+                Navigator.pop(context);
               },
             ),
-            title: Text(
-              "H2E Express",
-              style: TextStyle(fontSize: 30.0, color: Colors.black),
+            middle: Text("H2E Express"),
+            trailing: CupertinoButton(
+              child: Icon(CupertinoIcons.bell_solid),
+              onPressed: () {},
             ),
-            actions: <Widget>[
-              IconButton(
-                icon: Icon(
-                  Icons.notifications,color: Colors.black,
-                  size: 28,
-                ),
-              )
-            ],
-          ),
-          SliverToBoxAdapter(
-            child:  Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                width: 414,
-                decoration: BoxDecoration(
-                  color: Color(0xfff3f5f7),
-                  borderRadius: BorderRadius.circular(6.0)
-                ),
-                child: CupertinoSlidingSegmentedControl(
-                  groupValue:theriGroupVakue,
-                  onValueChanged: (changeFromGroupValue){
+            largeTitle: Padding(
+              padding: const EdgeInsets.only(right: 15),
+              child: CupertinoSlidingSegmentedControl(
+                  groupValue: currentIndexInTabBar,
+                  onValueChanged: (indexchange) {
                     setState(() {
-                      theriGroupVakue =changeFromGroupValue;
+                      currentIndexInTabBar = indexchange;
+                      print("currentIndexInTabBar ${currentIndexInTabBar}");
                     });
                   },
-                  children: logoWidgets,
-                  thumbColor: Colors.white,
-                ),
+                  children: titleAppbar,
+                  thumbColor: CupertinoColors.white,
+                  backgroundColor: Color(0xff8e8e93).withOpacity(0.3)),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Container(
+              width: size.width,
+              height: size.height,
+              child: PageView.builder(
+                onPageChanged: (index) {
+                  setState(() {
+                    currentIndexInTabBar = index;
+                    print("pageview index ${index}");
+                    print("currentIndexInTabBar ${currentIndexInTabBar}");
+                  });
+                },
+                itemCount: 3,
+                itemBuilder: (BuildContext context, int index) {
+                  return Container(
+                    color: colordata[currentIndexInTabBar].colors,
+                  );
+                },
               ),
             ),
           )
@@ -72,3 +77,5 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+

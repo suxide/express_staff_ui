@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:express_staff/pages/login.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:loading_animations/loading_animations.dart';
 
 class SplashScreenPage extends StatefulWidget {
@@ -13,14 +13,15 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(milliseconds: 1000), () {
-      Navigator.push(context, MaterialPageRoute(builder: (_) => LoginPage()));
+    Future.delayed(Duration(seconds: 2), () {
+      Navigator.push(context, CupertinoPageRoute(builder: (_) => LoginPage()));
     });
   }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
+    return CupertinoPageScaffold(
+      child: Stack(
         fit: StackFit.expand,
         children: <Widget>[
           Container(
@@ -37,7 +38,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
               children: <Widget>[
                 LoadingBumpingLine.circle(
                   size: 28,
-                  backgroundColor: Colors.grey[300],
+                  backgroundColor: CupertinoColors.systemGrey2
                 ),
                 SizedBox(
                   height: 10,
