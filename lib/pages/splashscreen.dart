@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 import 'package:express_staff/pages/login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:loading_animations/loading_animations.dart';
@@ -37,9 +36,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
             child: Column(
               children: <Widget>[
                 LoadingBumpingLine.circle(
-                  size: 28,
-                  backgroundColor: CupertinoColors.systemGrey2
-                ),
+                    size: 28, backgroundColor: CupertinoColors.systemGrey2),
                 SizedBox(
                   height: 10,
                 ),

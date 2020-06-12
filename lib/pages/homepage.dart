@@ -1,5 +1,6 @@
-import 'package:express_staff/pages/model/colors.dart';
+import 'package:express_staff/model/pagedata.dart';
 import 'package:flutter/cupertino.dart';
+
 
 class HomePage extends StatefulWidget {
   @override
@@ -20,7 +21,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-
     return CupertinoPageScaffold(
       child: CustomScrollView(
         slivers: <Widget>[
@@ -65,8 +65,10 @@ class _HomePageState extends State<HomePage> {
                 },
                 itemCount: 3,
                 itemBuilder: (BuildContext context, int index) {
-                  return Container(
-                    color: colordata[currentIndexInTabBar].colors,
+                  return Column(
+                    children: <Widget>[
+                    pages[currentIndexInTabBar]
+                    ],
                   );
                 },
               ),
