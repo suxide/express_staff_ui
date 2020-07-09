@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'delivery_alert_confrimation.dart';
 
 class OrderListButton extends StatefulWidget {
   const OrderListButton({
@@ -18,9 +19,7 @@ class _OrderListButtonState extends State<OrderListButton> {
         width: 120,
         height: 40,
         decoration: BoxDecoration(
-            border: Border.all(
-                width: 2,
-                color: CupertinoColors.activeBlue),
+            border: Border.all(width: 2, color: CupertinoColors.activeBlue),
             borderRadius: BorderRadius.circular(16.0)),
         child: Center(
           child: Text(
@@ -46,9 +45,7 @@ class _OrderListButtonState extends State<OrderListButton> {
                           Text(
                             "Purple sweet potato back pearl",
                             style: TextStyle(
-                                fontSize: 16.0,
-                                color: CupertinoColors
-                                    .black),
+                                fontSize: 16.0, color: CupertinoColors.black),
                           ),
                           SizedBox(
                             width: 13,
@@ -57,8 +54,7 @@ class _OrderListButtonState extends State<OrderListButton> {
                             "M",
                             style: TextStyle(
                                 fontSize: 16.0,
-                                color: CupertinoColors
-                                    .activeBlue),
+                                color: CupertinoColors.activeBlue),
                           ),
                           SizedBox(
                             width: 25,
@@ -67,8 +63,7 @@ class _OrderListButtonState extends State<OrderListButton> {
                             "*1",
                             style: TextStyle(
                                 fontSize: 16.0,
-                                color: CupertinoColors
-                                    .activeBlue),
+                                color: CupertinoColors.activeBlue),
                           )
                         ],
                       ),
@@ -80,9 +75,7 @@ class _OrderListButtonState extends State<OrderListButton> {
                           Text(
                             "Purple sweet potato back pearl",
                             style: TextStyle(
-                                fontSize: 16.0,
-                                color: CupertinoColors
-                                    .black),
+                                fontSize: 16.0, color: CupertinoColors.black),
                           ),
                           SizedBox(
                             width: 13,
@@ -91,8 +84,7 @@ class _OrderListButtonState extends State<OrderListButton> {
                             "M",
                             style: TextStyle(
                                 fontSize: 16.0,
-                                color: CupertinoColors
-                                    .activeBlue),
+                                color: CupertinoColors.activeBlue),
                           ),
                           SizedBox(
                             width: 25,
@@ -101,8 +93,7 @@ class _OrderListButtonState extends State<OrderListButton> {
                             "*1",
                             style: TextStyle(
                                 fontSize: 16.0,
-                                color: CupertinoColors
-                                    .activeBlue),
+                                color: CupertinoColors.activeBlue),
                           )
                         ],
                       ),
@@ -114,9 +105,7 @@ class _OrderListButtonState extends State<OrderListButton> {
                           Text(
                             "Purple sweet potato back pearl",
                             style: TextStyle(
-                                fontSize: 16.0,
-                                color: CupertinoColors
-                                    .black),
+                                fontSize: 16.0, color: CupertinoColors.black),
                           ),
                           SizedBox(
                             width: 13,
@@ -125,8 +114,7 @@ class _OrderListButtonState extends State<OrderListButton> {
                             "M",
                             style: TextStyle(
                                 fontSize: 16.0,
-                                color: CupertinoColors
-                                    .activeBlue),
+                                color: CupertinoColors.activeBlue),
                           ),
                           SizedBox(
                             width: 25,
@@ -135,8 +123,7 @@ class _OrderListButtonState extends State<OrderListButton> {
                             "*1",
                             style: TextStyle(
                                 fontSize: 16.0,
-                                color: CupertinoColors
-                                    .activeBlue),
+                                color: CupertinoColors.activeBlue),
                           )
                         ],
                       ),
@@ -148,9 +135,7 @@ class _OrderListButtonState extends State<OrderListButton> {
                           Text(
                             "សរុប",
                             style: TextStyle(
-                                fontSize: 16.0,
-                                color: CupertinoColors
-                                    .black),
+                                fontSize: 16.0, color: CupertinoColors.black),
                           ),
                           SizedBox(
                             width: 205,
@@ -159,20 +144,28 @@ class _OrderListButtonState extends State<OrderListButton> {
                             "\$11.00",
                             style: TextStyle(
                                 fontSize: 16.0,
-                                color: CupertinoColors
-                                    .activeBlue,
-                                fontWeight:
-                                FontWeight.bold),
+                                color: CupertinoColors.activeBlue,
+                                fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
                       SizedBox(
                         height: size.height * 0.5,
                       ),
-                      CupertinoButton(
-                        color: CupertinoColors.activeBlue,
-                        onPressed: () {},
-                        child: Text("ទទួល"),
+                      Container(
+                        width: size.width,
+                        height: 55,
+                        child: CupertinoButton(
+                          color: CupertinoColors.activeBlue,
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                CupertinoPageRoute(
+                                    builder: (_) => DeliveryAlert(),
+                                    fullscreenDialog: true));
+                          },
+                          child: Text("ទទួល"),
+                        ),
                       )
                     ],
                   ),

@@ -1,16 +1,29 @@
 import 'package:express_staff/model/pagedata.dart';
 import 'package:flutter/cupertino.dart';
 
-
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   int currentIndexInTabBar = 0;
+  AnimationController animationController;
+  Animation animation;
 
-  final Map<int, Widget> titleAppbar = const <int, Widget>{
+  @override
+  void initState() {
+    animationController = AnimationController(
+        vsync: this, duration: Duration(milliseconds: 1000));
+    animation = CurvedAnimation(
+        parent: animationController, curve: Curves.fastOutSlowIn)
+      ..addListener(() {
+        setState(() {});
+      });
+    super.initState();
+  }
+
+  final Map<int, Widget> titleAppbar = {
     0: Text(
       "មិនទាន់ទទួល",
       style: TextStyle(fontSize: 16),
@@ -26,9 +39,9 @@ class _HomePageState extends State<HomePage> {
         slivers: <Widget>[
           CupertinoSliverNavigationBar(
             leading: CupertinoButton(
-              child: Icon(CupertinoIcons.back),
+              child: Icon(CupertinoIcons.person_add_solid),
               onPressed: () {
-                Navigator.pop(context);
+
               },
             ),
             middle: Text("H2E Express"),
@@ -40,9 +53,9 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.only(right: 15),
               child: CupertinoSlidingSegmentedControl(
                   groupValue: currentIndexInTabBar,
-                  onValueChanged: (indexchange) {
+                  onValueChanged: (values) {
                     setState(() {
-                      currentIndexInTabBar = indexchange;
+                      currentIndexInTabBar = values;
                       print("currentIndexInTabBar ${currentIndexInTabBar}");
                     });
                   },
@@ -66,9 +79,7 @@ class _HomePageState extends State<HomePage> {
                 itemCount: 3,
                 itemBuilder: (BuildContext context, int index) {
                   return Column(
-                    children: <Widget>[
-                    pages[currentIndexInTabBar]
-                    ],
+                    children: <Widget>[pages[currentIndexInTabBar]],
                   );
                 },
               ),
@@ -79,5 +90,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
-

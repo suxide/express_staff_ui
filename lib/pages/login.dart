@@ -49,7 +49,6 @@ class _LoginPageState extends State<LoginPage> {
             Container(
               width: 354,
               height: 50,
-              color: Color(0xfff3f5f7),
               child: CupertinoTextField(
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 placeholderStyle: TextStyle(color: CupertinoColors.black),
@@ -65,7 +64,6 @@ class _LoginPageState extends State<LoginPage> {
             Container(
               width: 354,
               height: 50,
-              color: Color(0xfff3f5f7),
               child: CupertinoTextField(
                 placeholder: "លេខសម្ងាត់",
                 padding: EdgeInsets.symmetric(horizontal: 20),
@@ -79,19 +77,21 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(
               height: 20,
             ),
-          Container(
-            width: size.width*0.7,
-            child: CupertinoButton(
-              borderRadius: BorderRadius.circular(30.0),
-              color: CupertinoColors.activeBlue,
-               onPressed: () {
-                 Navigator.push(context, CupertinoPageRoute(builder: (_)=>HomePage()));
-               },
-               child: Text("ចូល"),
+            Container(
+              width: size.width * 0.7,
+              child: CupertinoButton(
+                color: CupertinoColors.activeBlue,
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                          fullscreenDialog: true, builder: (_) => HomePage()));
+                },
+                child: Text("ចូល"),
+              ),
             ),
-          ),
             SizedBox(
-              height: size.height*0.2,
+              height: size.height * 0.2,
             ),
             ColorFiltered(
               colorFilter: ColorFilter.mode(

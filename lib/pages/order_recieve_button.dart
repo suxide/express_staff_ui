@@ -168,10 +168,14 @@ class _OrderRecieveButtonState extends State<OrderRecieveButton> {
                       SizedBox(
                         height: size.height * 0.5,
                       ),
-                      CupertinoButton(
-                        color: CupertinoColors.activeBlue,
-                        onPressed: () {},
-                        child: Text("រួចរាល់"),
+                      Container(
+                        width: size.width,
+                        height: 55,
+                        child: CupertinoButton(
+                          color: CupertinoColors.activeBlue,
+                          onPressed: () {},
+                          child: Text("រួចរាល់"),
+                        ),
                       )
                     ],
                   ),
