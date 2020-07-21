@@ -8,13 +8,8 @@ class RecieveOrder extends StatefulWidget {
 class _RecieveOrderState extends State<RecieveOrder> {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    return CupertinoPageScaffold(
-      backgroundColor: CupertinoColors.activeGreen,
-      child: Container(
-        width: size.width,
-        height: size.height,
-      ),
+    return Container(
+      color: CupertinoColors.activeGreen,
     );
   }
 }
