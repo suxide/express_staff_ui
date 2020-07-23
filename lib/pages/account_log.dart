@@ -1,5 +1,4 @@
-import 'package:express_staff/model/customClipper.dart';
-import 'package:express_staff/model/pagedata.dart';
+import 'package:express_staff/pages/login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -15,27 +14,49 @@ class AccountLog extends StatefulWidget {
   _AccountLogState createState() => _AccountLogState();
 }
 
-class _AccountLogState extends State<AccountLog> with TickerProviderStateMixin {
+class _AccountLogState extends State<AccountLog> {
+  Future<void> _handleClickMe() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return CupertinoAlertDialog(
+          title: Text("តើអ្នកចង់ចាកចេញមែនទេ"),
+          content: Text(
+              'Your current location will be displayed on the map and used for directions, nearby search results, and estimated travel times.'),
+          actions: <Widget>[
+            CupertinoDialogAction(
+              child: Text('ចាកចេញ'),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    CupertinoPageRoute(
+                        builder: (_) => LoginPage(), fullscreenDialog: true));
+              },
+            ),
+            CupertinoDialogAction(
+              child: Text('មិនចាកចេញ'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Stack(
-          children: <Widget>[
-            ClipPath(
-              clipper: CustomShap(),
-              child: Container(
-                width: size.width,
-                height: size.height * 0.25,
-                color: CupertinoColors.activeOrange,
-              ),
-            ),
-            Positioned(
-              top: 100,
-              left: 115,
-              child: Container(
+        Container(
+          padding: EdgeInsets.only(top: 80, left: 110),
+          child: Column(
+            children: <Widget>[
+              Container(
                 width: size.width * 0.3,
                 height: size.height * 0.14,
                 decoration: BoxDecoration(
@@ -45,15 +66,9 @@ class _AccountLogState extends State<AccountLog> with TickerProviderStateMixin {
                         fit: BoxFit.cover,
                         image: AssetImage("assets/images/profile.jpg"))),
               ),
-            ),
-          ],
-        ),
-        Container(
-          padding: EdgeInsets.only(
-            left: 140,
-          ),
-          child: Column(
-            children: <Widget>[
+              SizedBox(
+                height: 10,
+              ),
               Text(
                 "Sam JM",
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -62,21 +77,21 @@ class _AccountLogState extends State<AccountLog> with TickerProviderStateMixin {
                 "អ្នកដឹកជញ្ចូន",
                 style: TextStyle(
                     fontSize: 16, color: CupertinoColors.inactiveGray),
-              )
+              ),
             ],
           ),
         ),
-        Container(
-          height: size.height * 0.68,
-          child: ListView.builder(
-              itemCount: 5,
-              itemBuilder: (_, index) {
-                return ListTile(
-                  onTap: () {},
-                  leading: menuIcons[index].Iconnames,
-                  title: Text(menus[index]),
-                );
-              }),
+        SizedBox(
+          height: 50,
+        ),
+        Card(
+          child: ListTile(
+            onTap: () {
+              _handleClickMe();
+            },
+            leading: Icon(CupertinoIcons.share_up),
+            title: Text("ចាកចេញ"),
+          ),
         )
       ],
     );
