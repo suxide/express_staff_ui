@@ -1,4 +1,5 @@
-import 'package:express_staff/pages/login.dart';
+import 'package:express_staff/model/customClipper.dart';
+import 'package:express_staff/model/pagedata.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -14,49 +15,70 @@ class AccountLog extends StatefulWidget {
   _AccountLogState createState() => _AccountLogState();
 }
 
-class _AccountLogState extends State<AccountLog> {
+class _AccountLogState extends State<AccountLog> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: widget.size.width,
-      height: widget.size.height,
-      color: CupertinoColors.lightBackgroundGray,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(left: 90, top: 80),
-            child: Container(
-              width: 150,
-              height: 150,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: CupertinoColors.activeBlue,
+    Size size = MediaQuery.of(context).size;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Stack(
+          children: <Widget>[
+            ClipPath(
+              clipper: CustomShap(),
+              child: Container(
+                width: size.width,
+                height: size.height * 0.25,
+                color: CupertinoColors.activeOrange,
               ),
             ),
+            Positioned(
+              top: 100,
+              left: 115,
+              child: Container(
+                width: size.width * 0.3,
+                height: size.height * 0.14,
+                decoration: BoxDecoration(
+                    border: Border.all(color: CupertinoColors.white, width: 5),
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage("assets/images/profile.jpg"))),
+              ),
+            ),
+          ],
+        ),
+        Container(
+          padding: EdgeInsets.only(
+            left: 140,
           ),
-          SizedBox(height: 40,),
-          Padding(
-            padding: const EdgeInsets.only(left: 115),
-            child: Text("វិចិត្រ ស្មោះស្មេហ៏"),
-          ),
-          SizedBox(height: 50,),
-          Row(
+          child: Column(
             children: <Widget>[
-              CupertinoButton(
-                onPressed: () {
-                  Navigator.push(context, CupertinoPageRoute(builder: (_)=>LoginPage()));
-                },
-                child: Icon(CupertinoIcons.reply_all),
+              Text(
+                "Sam JM",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
-              SizedBox(
-                width: 10,
-              ),
-              Text("ចាកចេញ")
+              Text(
+                "អ្នកដឹកជញ្ចូន",
+                style: TextStyle(
+                    fontSize: 16, color: CupertinoColors.inactiveGray),
+              )
             ],
-          )
-        ],
-      ),
+          ),
+        ),
+        Container(
+          height: size.height * 0.68,
+          child: ListView.builder(
+              itemCount: 5,
+              itemBuilder: (_, index) {
+                return ListTile(
+                  onTap: () {},
+                  leading: menuIcons[index].Iconnames,
+                  title: Text(menus[index]),
+                );
+              }),
+        )
+      ],
     );
   }
 }

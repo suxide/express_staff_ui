@@ -19,13 +19,13 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   @override
   void initState() {
-    animationController = AnimationController(
-        vsync: this, duration: Duration(milliseconds: 1000));
-    animation = CurvedAnimation(
-        parent: animationController, curve: Curves.fastOutSlowIn)
-      ..addListener(() {
-        setState(() {});
-      });
+    animationController =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 500));
+    animation =
+        CurvedAnimation(parent: animationController, curve: Curves.easeInQuad)
+          ..addListener(() {
+            setState(() {});
+          });
     super.initState();
     pages = [
       OrderList(
@@ -51,40 +51,67 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+          backgroundColor: Colors.black,
           body: Stack(
-        children: <Widget>[
-          AccountLog(
-            size: size,
-          ),
-          Transform(
-            transform: Matrix4.translationValues(
-                0.0 + (size.width * 0.8 * (animation.value)), 0.0, 0.0),
-            child: Container(
-              width: size.width,
-              height: size.height,
-              color: Colors.white,
-              child: buildCustomScrollView(),
-            ),
-          ),
-          Transform(
-            transform: Matrix4.translationValues(
-                size.width * 0.01 * animation.value, 0.0, 0.0),
-            child: SafeArea(
-              child: CupertinoButton(
-                onPressed: () {
-                  animation.value == 0
-                      ? animationController.forward(from: 0.1)
-                      : animationController.reverse(from: 1.0);
-                },
-                child: AnimatedIcon(
-                  progress: animation,
-                  icon: AnimatedIcons.menu_close,
+            children: <Widget>[
+              Transform(
+                alignment: FractionalOffset.center,
+                transform:
+                    Matrix4.translationValues(0.0 * animation.value, 0.0, 0.0)
+                      ..scale(1.0 - (0.1 * animation.value)),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(15),
+                    bottomLeft: Radius.circular(15),
+                  ),
+                  child: Container(
+                    width: size.width,
+                    height: size.height,
+                    color: Colors.white,
+                    child: AccountLog(
+                      size: size,
+                    ),
+                  ),
                 ),
               ),
-            ),
-          )
-        ],
-      )),
+              Transform(
+                transform: Matrix4.translationValues(
+                    0.0 + (size.width * 0.8 * (animation.value)), 0.0, 0.0),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(25.0),
+                  child: Container(
+                    width: size.width,
+                    height: size.height,
+                    decoration: BoxDecoration(
+                      color: CupertinoColors.white,
+                      border: Border.all(
+                          width: 2,
+                          color: CupertinoColors.black.withOpacity(0.5)),
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    child: buildCustomScrollView(),
+                  ),
+                ),
+              ),
+              Transform(
+                transform: Matrix4.translationValues(
+                    size.width * 0.02 * animation.value, 0.0, 0.0),
+                child: SafeArea(
+                  child: CupertinoButton(
+                    onPressed: () {
+                      animation.value == 0
+                          ? animationController.forward(from: 0.1)
+                          : animationController.reverse(from: 1.0);
+                    },
+                    child: AnimatedIcon(
+                      progress: animation,
+                      icon: AnimatedIcons.menu_close,
+                    ),
+                  ),
+                ),
+              )
+            ],
+          )),
     );
   }
 
@@ -99,6 +126,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             "H2E",
             style: TextStyle(color: CupertinoColors.activeBlue),
           ),
+          centerTitle: true,
           actions: <Widget>[
             IconButton(
               onPressed: () {},

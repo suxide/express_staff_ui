@@ -1,10 +1,29 @@
-import 'package:express_staff/pages/order_list.dart';
-import 'package:express_staff/pages/order_listANDrecieve_order.dart';
-import 'package:express_staff/pages/recieve_order.dart';
 import 'package:flutter/cupertino.dart';
 
-List<Widget> pages = [
-  OrderList(),
-  RecieveOrder(),
-  OrderListAndRecieve()
+class MenuIcon{
+  final dynamic Iconnames;
+
+  MenuIcon({this.Iconnames});
+}
+
+List<MenuIcon> menuIcons=[
+  MenuIcon(Iconnames: Icon(CupertinoIcons.book_solid)),
+  MenuIcon(Iconnames: Icon(CupertinoIcons.profile_circled)),
+  MenuIcon(Iconnames: Icon(CupertinoIcons.gear_solid)),
+  MenuIcon(Iconnames: Icon(CupertinoIcons.phone_solid)),
+  MenuIcon(Iconnames: Icon(CupertinoIcons.share_up))
+];
+
+class Menus{
+  final String titles;
+
+  Menus({this.titles});
+}
+
+List<String> menus=[
+  'About',
+  'Profile',
+  'Settings',
+  'Support',
+  'Logout',
 ];
