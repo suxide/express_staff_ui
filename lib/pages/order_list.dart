@@ -1,7 +1,10 @@
 import 'dart:ui';
 
+import 'package:express_staff/pages/order_list_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'order_recieve_button.dart';
 
 class OrderList extends StatefulWidget {
   final dynamic scrollController;
@@ -112,50 +115,11 @@ class _OrderListState extends State<OrderList> {
                             ),
                             Row(
                               children: <Widget>[
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(50.0),
-                                  child: Container(
-                                    width: 100,
-                                    height: 40,
-                                    decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(50.0),
-                                        border: Border.all(
-                                          width: 1,
-                                          color: CupertinoColors.activeBlue,
-                                        )),
-                                    child: RawMaterialButton(
-                                      onPressed: () {},
-                                      child: Text(
-                                        "បញ្ជីការកម៉្មង់",
-                                        style: TextStyle(
-                                            color: CupertinoColors.activeBlue),
-                                      ),
-                                    ),
-                                  ),
-                                ),
+                                OrderListButton(),
                                 SizedBox(
                                   width: 15,
                                 ),
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(50.0),
-                                  child: Container(
-                                    width: 100,
-                                    height: 40,
-                                    decoration: BoxDecoration(
-                                      color: CupertinoColors.activeBlue,
-                                      borderRadius: BorderRadius.circular(50.0),
-                                    ),
-                                    child: RawMaterialButton(
-                                      onPressed: () {},
-                                      child: Text(
-                                        "ទទួល",
-                                        style: TextStyle(
-                                            color: CupertinoColors.white),
-                                      ),
-                                    ),
-                                  ),
-                                )
+                                OrderRecieveButton()
                               ],
                             )
                           ],

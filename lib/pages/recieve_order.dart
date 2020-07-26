@@ -47,7 +47,7 @@ class _RecieveOrderState extends State<RecieveOrder> {
                             borderRadius: BorderRadius.circular(13.0),
                             image: DecorationImage(
                                 fit: BoxFit.cover,
-                                image: AssetImage("assets/images/image.jpg"))),
+                                image: AssetImage("assets/images/ahcha222.jpg"))),
                       ),
                     ),
                     SizedBox(

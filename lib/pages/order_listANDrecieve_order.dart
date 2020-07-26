@@ -13,7 +13,6 @@ class OrderListAndRecieve extends StatefulWidget {
 
 class _OrderListAndRecieveState extends State<OrderListAndRecieve> {
   int selectedIndex = 0;
-  int orderIndex = 2;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -57,13 +56,13 @@ class _OrderListAndRecieveState extends State<OrderListAndRecieve> {
                                 image: DecorationImage(
                                     fit: BoxFit.cover,
                                     image: AssetImage(
-                                        "assets/images/anchar1.jpg"))),
+                                        "assets/images/ancha111.jpg"))),
                           ),
                         ),
                         SizedBox(
                           width: 20,
                         ),
-                        selectedIndex == index++
+                        selectedIndex == index--
                             ? buildOrderDetail()
                             : buildReciveOrderDetail(index),
                       ],
@@ -209,9 +208,9 @@ class _OrderListAndRecieveState extends State<OrderListAndRecieve> {
             ),
             Container(
               child: Text(
-                orderIndex == index ? "បានទទួល" : "កំពុងដឹកជញ្ចូន",
+                selectedIndex == index ? "បានទទួល" : "កំពុងដឹកជញ្ចូន",
                 style: TextStyle(
-                    color: orderIndex == index
+                    color: selectedIndex == index
                         ? CupertinoColors.systemGreen
                         : CupertinoColors.activeBlue),
               ),
