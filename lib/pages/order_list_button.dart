@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:express_staff/model/pagedata.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -85,7 +86,7 @@ class _OrderListButtonState extends State<OrderListButton> {
                               return Material(
                                   child: ListTile(
                                 title: Text(
-                                  "Purple sweet potato black pearl fresh milk",
+                                  checkorder[index],
                                   style: TextStyle(
                                     fontSize: 16,
                                   ),
@@ -140,7 +141,7 @@ class _OrderListButtonState extends State<OrderListButton> {
                           child: CupertinoButton(
                             color: CupertinoColors.activeBlue,
                             onPressed: () {},
-                            child: Text("រួចរាល់"),
+                            child: Text("ទទួល"),
                           ),
                         )
                       ],

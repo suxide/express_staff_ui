@@ -1,5 +1,8 @@
 import 'dart:ui';
 
+import 'package:express_staff/model/pagedata.dart';
+import 'package:express_staff/pages/order_list_button.dart';
+import 'package:express_staff/pages/order_recieve_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -62,8 +65,8 @@ class _OrderListAndRecieveState extends State<OrderListAndRecieve> {
                         SizedBox(
                           width: 20,
                         ),
-                        selectedIndex == index--
-                            ? buildOrderDetail()
+                        selectedIndex != index-1
+                            ? buildOrderDetail(index)
                             : buildReciveOrderDetail(index),
                       ],
                     )),
@@ -73,7 +76,7 @@ class _OrderListAndRecieveState extends State<OrderListAndRecieve> {
         ));
   }
 
-  Column buildOrderDetail() {
+  Column buildOrderDetail(int index) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -83,7 +86,7 @@ class _OrderListAndRecieveState extends State<OrderListAndRecieve> {
         Row(
           children: <Widget>[
             Text(
-              "087 765 654",
+              numberphones[index],
               style: TextStyle(
                   color: CupertinoColors.activeBlue,
                   fontSize: 16,
@@ -100,7 +103,7 @@ class _OrderListAndRecieveState extends State<OrderListAndRecieve> {
               width: 5,
             ),
             Text(
-              "1គីឡូ",
+              distance[index],
               style: TextStyle(color: CupertinoColors.activeBlue),
             )
           ],
@@ -111,7 +114,7 @@ class _OrderListAndRecieveState extends State<OrderListAndRecieve> {
         Row(
           children: <Widget>[
             Text(
-              "មីកន្ដាំងឆ្ងាញ់បាត់ដំបង,Street 115,\nKrong Battamabang",
+              location[index],
               style: TextStyle(
                   fontSize: 14.0, color: CupertinoColors.inactiveGray),
             )
@@ -125,22 +128,15 @@ class _OrderListAndRecieveState extends State<OrderListAndRecieve> {
             ClipRRect(
               borderRadius: BorderRadius.circular(50.0),
               child: Container(
-                width: 100,
-                height: 40,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50.0),
-                    border: Border.all(
-                      width: 1,
-                      color: CupertinoColors.activeBlue,
-                    )),
-                child: RawMaterialButton(
-                  onPressed: () {},
-                  child: Text(
-                    "បញ្ជីការកម៉្មង់",
-                    style: TextStyle(color: CupertinoColors.activeBlue),
-                  ),
-                ),
-              ),
+                  width: 100,
+                  height: 40,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50.0),
+                      border: Border.all(
+                        width: 1,
+                        color: CupertinoColors.activeBlue,
+                      )),
+                  child: OrderListButton()),
             ),
             SizedBox(
               width: 15,
@@ -148,20 +144,13 @@ class _OrderListAndRecieveState extends State<OrderListAndRecieve> {
             ClipRRect(
               borderRadius: BorderRadius.circular(50.0),
               child: Container(
-                width: 100,
-                height: 40,
-                decoration: BoxDecoration(
-                  color: CupertinoColors.activeBlue,
-                  borderRadius: BorderRadius.circular(50.0),
-                ),
-                child: RawMaterialButton(
-                  onPressed: () {},
-                  child: Text(
-                    "ទទួល",
-                    style: TextStyle(color: CupertinoColors.white),
+                  width: 100,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    color: CupertinoColors.activeBlue,
+                    borderRadius: BorderRadius.circular(50.0),
                   ),
-                ),
-              ),
+                  child: OrderRecieveButton()),
             )
           ],
         )
@@ -179,7 +168,7 @@ class _OrderListAndRecieveState extends State<OrderListAndRecieve> {
         Row(
           children: <Widget>[
             Text(
-              "087 765 654",
+              numberphones[index],
               style: TextStyle(
                   color: CupertinoColors.activeBlue,
                   fontSize: 16,
@@ -200,7 +189,7 @@ class _OrderListAndRecieveState extends State<OrderListAndRecieve> {
               width: 5,
             ),
             Text(
-              "1គីឡូ",
+              distance[index],
               style: TextStyle(color: CupertinoColors.activeBlue),
             ),
             SizedBox(
@@ -208,9 +197,9 @@ class _OrderListAndRecieveState extends State<OrderListAndRecieve> {
             ),
             Container(
               child: Text(
-                selectedIndex == index ? "បានទទួល" : "កំពុងដឹកជញ្ចូន",
+                selectedIndex != index ? "បានទទួល" : "កំពុងដឹកជញ្ចូន",
                 style: TextStyle(
-                    color: selectedIndex == index
+                    color: selectedIndex != index
                         ? CupertinoColors.systemGreen
                         : CupertinoColors.activeBlue),
               ),
@@ -220,7 +209,7 @@ class _OrderListAndRecieveState extends State<OrderListAndRecieve> {
         Row(
           children: <Widget>[
             Text(
-              "មីកន្ដាំងឆ្ងាញ់បាត់ដំបង,Street 115,\nKrong Battamabang",
+              location[index],
               style: TextStyle(
                   fontSize: 14.0, color: CupertinoColors.inactiveGray),
             )

@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:express_staff/model/pagedata.dart';
 import 'package:express_staff/pages/order_list_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -73,7 +74,7 @@ class _OrderListState extends State<OrderList> {
                             Row(
                               children: <Widget>[
                                 Text(
-                                  "087 765 654",
+                                  numberphones[index],
                                   style: TextStyle(
                                       color: CupertinoColors.activeBlue,
                                       fontSize: 16,
@@ -91,7 +92,7 @@ class _OrderListState extends State<OrderList> {
                                   width: 5,
                                 ),
                                 Text(
-                                  "1គីឡូ",
+                                  distance[index],
                                   style: TextStyle(
                                       color: CupertinoColors.activeBlue),
                                 )
@@ -103,7 +104,7 @@ class _OrderListState extends State<OrderList> {
                             Row(
                               children: <Widget>[
                                 Text(
-                                  "មីកន្ដាំងឆ្ងាញ់បាត់ដំបង,Street 115,\nKrong Battamabang",
+                                  location[index],
                                   style: TextStyle(
                                       fontSize: 14.0,
                                       color: CupertinoColors.inactiveGray),
