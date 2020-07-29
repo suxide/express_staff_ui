@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'delivery_alert_confrimation.dart';
 
 class OrderRecieveButton extends StatefulWidget {
   const OrderRecieveButton({
@@ -137,7 +138,12 @@ class _OrderRecieveButtonState extends State<OrderRecieveButton> {
                           height: 60,
                           child: CupertinoButton(
                             color: CupertinoColors.activeBlue,
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pushReplacement(
+                                  context,
+                                  CupertinoPageRoute(
+                                      builder: (_) => MapDelivery()));
+                            },
                             child: Text("រួចរាល់"),
                           ),
                         )

@@ -1,181 +1,168 @@
+import 'package:express_staff/model/pagedata.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'order_list.dart';
+import 'accept_button.dart';
+import 'order_list_button.dart';
 
-class DeliveryAlert extends StatefulWidget {
+class MapDelivery extends StatefulWidget {
   @override
-  _DeliveryAlertState createState() => _DeliveryAlertState();
+  _MapDeliveryState createState() => _MapDeliveryState();
 }
 
-class _DeliveryAlertState extends State<DeliveryAlert> {
+class _MapDeliveryState extends State<MapDelivery> {
+  int index = 0;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return CupertinoPageScaffold(
-        navigationBar: CupertinoNavigationBar(
-          leading: CupertinoButton(
-            child: Icon(CupertinoIcons.back),
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  CupertinoPageRoute(
-                    builder: (_) => OrderList(),
-                    fullscreenDialog: true,
-                  ));
-            },
-          ),
-          middle: Text("H2E Express"),
-          trailing: CupertinoButton(
-            child: Icon(CupertinoIcons.bell_solid),
-            onPressed: () {},
-          ),
-        ),
-        child: CustomScrollView(
-          slivers: <Widget>[
-            SliverToBoxAdapter(
-              child: Stack(
-                children: <Widget>[
-                  Container(
-                    width: size.width,
-                    height: size.height,
+      child: Container(
+        child: Stack(
+          fit: StackFit.expand,
+          children: <Widget>[
+            Image.asset(
+              "assets/images/GoogleMapTA.jpg",
+              fit: BoxFit.cover,
+            ),
+            buildMaterialApp(),
+            SafeArea(
+                child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    height: size.height * 0.19,
                     decoration: BoxDecoration(
-                        image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image:
-                                AssetImage("assets/images/GoogleMapTA.jpg"))),
-                    child: PageView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: 4,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
+                      borderRadius: BorderRadius.circular(13.0),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(blurRadius: 2, color: CupertinoColors.black)
+                      ],
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.only(top: 20, left: 10),
+                          child: Container(
+                            width: 100,
+                            height: 110,
+                            decoration: BoxDecoration(
+                                color: CupertinoColors.inactiveGray,
+                                image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: AssetImage(
+                                        "assets/images/anchar1.jpg"))),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Container(
-                              padding: const EdgeInsets.only(
-                                  bottom: 30, left: 16, right: 16),
-                              child: Container(
-                                width: 382,
-                                height: 185,
-                                decoration: BoxDecoration(
-                                    boxShadow: [
-                                      BoxShadow(
-                                          blurRadius: 10,
-                                          spreadRadius: -3,
-                                          color: CupertinoColors.black
-                                              .withOpacity(0.4))
-                                    ],
-                                    color: CupertinoColors.white,
-                                    borderRadius: BorderRadius.circular(16.0)),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    //Order List Detail
-                                    Container(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 15, vertical: 16),
-                                      child: Text(
-                                        "097765658",
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            color: CupertinoColors.activeBlue,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ),
-                                    Container(
-                                      padding:
-                                          EdgeInsets.symmetric(horizontal: 10),
-                                      child: Row(
-                                        children: <Widget>[
-                                          Icon(
-                                            CupertinoIcons.location_solid,
-                                            color: CupertinoColors.inactiveGray,
-                                          ),
-                                          SizedBox(
-                                            width: 5,
-                                          ),
-                                          Text(
-                                            "មីកន្ដាំងឆ្ងាញ់បាត់ដំបង,Street 115,Krong Battamabang",
-                                            style: TextStyle(fontSize: 14.0),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    Container(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 40, vertical: 10),
-                                      child: Row(
-                                        children: <Widget>[
-                                          Text(
-                                            "ចម្ងាយ",
-                                            style: TextStyle(fontSize: 14.0),
-                                          ),
-                                          SizedBox(
-                                            width: 10,
-                                          ),
-                                          Text(
-                                            "1គីឡូ",
-                                            style: TextStyle(
-                                                color:
-                                                    CupertinoColors.activeBlue,
-                                                fontSize: 14.0),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    Container(
-                                      child: Row(
-                                        children: <Widget>[
-                                          Padding(
-                                            padding: const EdgeInsets.symmetric(horizontal: 20),
-                                            child: Container(
-                                                width: 120,
-                                                height: 40,
-                                                decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            16.0),
-                                                    border: Border.all(
-                                                        width: 2,
-                                                        color: CupertinoColors
-                                                            .activeBlue)),
-                                                child: Center(
-                                                    child: Text(
-                                                  "បញ្ជីការកម៉្មង់",
-                                                ))),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Container(
-                                                width: 120,
-                                                height: 40,
-                                                decoration: BoxDecoration(
-                                                  color: CupertinoColors.activeBlue,
-                                                    borderRadius:
-                                                    BorderRadius.circular(
-                                                        16.0),
-                                                   ),
-                                                child: Center(
-                                                    child: Text(
-                                                      "ទទួល",style: TextStyle(color: CupertinoColors.white),
-                                                    ))),
-                                          )
-                                        ],
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
+                            SizedBox(
+                              height: 10,
                             ),
+                            Row(
+                              children: <Widget>[
+                                Text(
+                                  numberphones[index],
+                                  style: TextStyle(
+                                      color: CupertinoColors.activeBlue,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                Text(
+                                  "ចម្ងាយ",
+                                  style: TextStyle(
+                                      color: CupertinoColors.inactiveGray),
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  distance[index],
+                                  style: TextStyle(
+                                      color: CupertinoColors.activeBlue),
+                                )
+                              ],
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Row(
+                              children: <Widget>[
+                                Text(
+                                  location[index],
+                                  style: TextStyle(
+                                      fontSize: 14.0,
+                                      color: CupertinoColors.inactiveGray),
+                                )
+                              ],
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Row(
+                              children: <Widget>[
+                                OrderListButton(),
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                AcceptButton()
+                              ],
+                            )
                           ],
-                        );
-                      },
+                        ),
+                      ],
                     ),
                   ),
-                ],
+                ),
+              ],
+            )),
+          ],
+        ),
+      ),
+    );
+  }
+
+  MaterialApp buildMaterialApp() {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          backgroundColor: Colors.grey.withOpacity(0.3),
+          elevation: 0.0,
+          title: Text(
+            "H2E",
+            style: TextStyle(color: CupertinoColors.activeBlue),
+          ),
+          leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back,
+              color: Colors.blue,
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+          actions: <Widget>[
+            IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.notifications_active,
+                color: CupertinoColors.activeBlue,
               ),
             )
           ],
-        ));
+        ),
+      ),
+    );
   }
 }
