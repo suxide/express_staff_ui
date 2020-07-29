@@ -27,8 +27,7 @@ class _OrderRecieveButtonState extends State<OrderRecieveButton> {
         child: RawMaterialButton(
           child: Text(
             "ទទួល",
-            style: TextStyle(
-                color: CupertinoColors.white),
+            style: TextStyle(color: CupertinoColors.white),
           ),
           onPressed: () {
             showCupertinoModalPopup(
@@ -83,26 +82,26 @@ class _OrderRecieveButtonState extends State<OrderRecieveButton> {
                             itemBuilder: (BuildContext context, int index) {
                               return Material(
                                   child: ListTile(
-                                    title: Text(
-                                      "Purple sweet potato black pearl fresh milk",
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                    subtitle: Text(
-                                      "Size : M",
-                                      style: TextStyle(
-                                          fontSize: 16.0,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    trailing: Text(
-                                      "x1",
-                                      style: TextStyle(
-                                          fontSize: 16.0,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.blue),
-                                    ),
-                                  ));
+                                title: Text(
+                                  "Purple sweet potato black pearl fresh milk",
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                  ),
+                                ),
+                                subtitle: Text(
+                                  "Size : M",
+                                  style: TextStyle(
+                                      fontSize: 16.0,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                trailing: Text(
+                                  "x1",
+                                  style: TextStyle(
+                                      fontSize: 16.0,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.blue),
+                                ),
+                              ));
                             },
                           ),
                         ),
@@ -137,14 +136,17 @@ class _OrderRecieveButtonState extends State<OrderRecieveButton> {
                           width: 209,
                           height: 60,
                           child: CupertinoButton(
+                            child: Text("រួចរាល់"),
                             color: CupertinoColors.activeBlue,
                             onPressed: () {
-                              Navigator.pushReplacement(
+                              Navigator.push(
                                   context,
                                   CupertinoPageRoute(
-                                      builder: (_) => MapDelivery()));
+                                      fullscreenDialog: true,
+                                      builder: (BuildContext context) {
+                                        return MapDelivery();
+                                      }));
                             },
-                            child: Text("រួចរាល់"),
                           ),
                         )
                       ],
