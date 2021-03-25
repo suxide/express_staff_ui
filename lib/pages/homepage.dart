@@ -10,7 +10,8 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+
+class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin {
   int currentIndexInTabBar = 0;
   AnimationController animationController;
   Animation animation;
@@ -19,8 +20,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   @override
   void initState() {
-    animationController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 500));
+    animationController = AnimationController(vsync: this,duration: Duration(milliseconds: 500));
     animation =
         CurvedAnimation(parent: animationController, curve: Curves.easeInQuad)
           ..addListener(() {
